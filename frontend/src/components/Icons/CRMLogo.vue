@@ -1,3 +1,6 @@
 <template>
-  <img src="/assets/crm/images/logo.png" alt="GuavaCRM" class="object-contain" />
+  <img :src="logoUrl" alt="GuavaCRM" class="object-contain" />
 </template>
+<script setup>
+import logoUrl from '../../../../crm/public/images/logo.png'
+</script>
