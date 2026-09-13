@@ -14,7 +14,20 @@ def before_install():
 	pass
 
 
+def set_website_branding():
+	# Website Settings defaults to Frappe's own name/logo/favicon on a fresh
+	# site, which shows up on the login, signup, and password-reset pages.
+	# Override it here so it's part of site creation instead of a manual,
+	# non-reproducible tweak on each deployed site.
+	website_settings = frappe.get_single("Website Settings")
+	website_settings.app_name = "GuavaCRM"
+	website_settings.app_logo = "/assets/crm/images/logo.png"
+	website_settings.favicon = "/assets/crm/images/logo.png"
+	website_settings.save(ignore_permissions=True)
+
+
 def after_install(force=False):
+	set_website_branding()
 	add_default_lead_statuses()
 	add_default_deal_statuses()
 	add_default_communication_statuses()
