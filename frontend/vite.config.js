@@ -19,6 +19,12 @@ export default defineConfig(async ({ mode }) => {
           // don't take effect, old "Not Permitted" behaviour sticks around).
           enabled: false,
         },
+        workbox: {
+          // Default 2 MiB precache limit is smaller than this app's largest
+          // chunks (a few JS/CSS bundles run 2-7 MB); without raising it the
+          // production build fails outright instead of just skipping them.
+          maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        },
         manifest: {
           display: 'standalone',
           name: 'GuavaCRM',
