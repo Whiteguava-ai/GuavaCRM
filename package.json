@@ -2,13 +2,13 @@
 	"private": true,
 	"type": "module",
 	"name": "crm",
-	"description": "Frappe CRM helps you work, not slow you down. Open-source, intuitive, and free from extra costs.",
+	"description": "GuavaCRM helps you work, not slow you down. Open-source, intuitive, and free from extra costs.",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/frappe/crm.git"
 	},
 	"homepage": "https://frappe.io/crm",
-	"author": "Frappe Technologies Pvt. Ltd.",
+	"author": "GuavaCRM",
 	"license": "GPL-3.0",
 	"bugs": {
 		"url": "https://github.com/frappe/crm/issues"
@@ -17,7 +17,7 @@
 		"postinstall": "cd frontend && yarn install --check-files",
 		"dev": "cd frontend && yarn dev",
 		"build": "cd frontend && yarn build",
-		"upgrade-frappeui": "cd frontend && yarn add frappe-ui@latest && cd ..",
+		"upgrade-ui-kit": "cd frontend && yarn add frappe-ui@latest && cd ..",
 		"test:e2e": "playwright test",
 		"test:e2e:ui": "playwright test --ui",
 		"test:e2e:headed": "playwright test --headed",

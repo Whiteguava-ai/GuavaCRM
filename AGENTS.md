@@ -2,7 +2,7 @@
 
 ## What this project is
 
-Frappe CRM frontend. Vue 3 + frappe-ui. The backend is Frappe Python. Scripts in
+GuavaCRM frontend. Vue 3 + frappe-ui. The backend is Frappe Python. Scripts in
 `frontend/` only; Python in `crm/` (Frappe app). No build step for Form Scripts —
 they run as evaluated strings in the browser.
 

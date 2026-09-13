@@ -28,7 +28,7 @@
           </div>
           <ThemeSwitcher
             :logo="brand.logo || CRMLogo"
-            :name="brand.name || 'CRM'"
+            :name="brand.name || 'GuavaCRM'"
           />
         </div>
         <div class="flex items-center justify-between">

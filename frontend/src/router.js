@@ -194,8 +194,13 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 
-  if (isLoggedIn && to.name !== 'Not Permitted' && !isCrmUser()) {
-    next({ name: 'Not Permitted' })
+  if (isLoggedIn && !isCrmUser()) {
+    // Either a genuine non-CRM user, or (more often on a dev instance) a stale
+    // login cookie whose session has expired so the user list failed to load.
+    // Send them straight to the real login screen instead of the dead-end
+    // "Not Permitted" page. A valid login overwrites the stale cookie.
+    window.location.href = '/login?redirect-to=/crm'
+    return
   } else if (to.name === 'Home' && isLoggedIn) {
     const { views, getDefaultView } = viewsStore()
     await views.promise

@@ -1,3 +1,3 @@
 export * from './auth'
-export * from './frappe'
+export * from './api'
 export * from './crm'

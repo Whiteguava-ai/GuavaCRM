@@ -1,11 +1,11 @@
 app_name = "crm"
-app_title = "Frappe CRM"
-app_publisher = "Frappe Technologies Pvt. Ltd."
+app_title = "GuavaCRM"
+app_publisher = "GuavaCRM"
 app_description = "Kick-ass Open Source CRM"
 app_email = "shariq@frappe.io"
 app_license = "AGPLv3"
-app_icon_url = "/assets/crm/images/logo.svg"
-app_icon_title = "CRM"
+app_icon_url = "/assets/crm/images/logo.png"
+app_icon_title = "GuavaCRM"
 app_icon_route = "/crm"
 
 # Apps
@@ -15,8 +15,8 @@ app_icon_route = "/crm"
 add_to_apps_screen = [
 	{
 		"name": "crm",
-		"logo": "/assets/crm/images/logo.svg",
-		"title": "CRM",
+		"logo": "/assets/crm/images/logo.png",
+		"title": "GuavaCRM",
 		"route": "/crm",
 		"has_permission": "crm.api.check_app_permission",
 	}

@@ -1,5 +1,5 @@
 import { APIRequestContext } from '@playwright/test'
-import { createDoc, deleteDoc, getList } from './frappe'
+import { createDoc, deleteDoc, getList } from './api'
 
 export const LEAD_DOCTYPE = 'CRM Lead'
 export const DEAL_DOCTYPE = 'CRM Deal'

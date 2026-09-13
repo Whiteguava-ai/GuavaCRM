@@ -14,12 +14,15 @@ export default defineConfig(async ({ mode }) => {
       VitePWA({
         registerType: 'autoUpdate',
         devOptions: {
-          enabled: true,
+          // Disabled: the dev service worker caches JS aggressively and keeps
+          // serving stale bundles after code edits (symptom: router changes
+          // don't take effect, old "Not Permitted" behaviour sticks around).
+          enabled: false,
         },
         manifest: {
           display: 'standalone',
-          name: 'Frappe CRM',
-          short_name: 'Frappe CRM',
+          name: 'GuavaCRM',
+          short_name: 'GuavaCRM',
           start_url: '/crm',
           description:
             'Modern & 100% Open-source CRM tool to supercharge your sales operations',
@@ -125,10 +128,10 @@ async function importFrappeUIPlugin(isDev, config) {
     try {
       // Check if local frappe-ui has the vite plugin file
       const fs = await import('node:fs')
-      const localVitePluginPath = path.resolve(__dirname, '../frappe-ui/vite')
+      const localVitePluginPath = path.resolve(__dirname, '../ui-kit/vite')
 
       if (fs.existsSync(localVitePluginPath)) {
-        const module = await import('../frappe-ui/vite')
+        const module = await import('../ui-kit/vite')
         console.info('Local frappe-ui vite plugin found, using local plugin')
         config.resolve.alias = getAliases(config)
         return module.default
@@ -152,27 +155,27 @@ function getAliases(config) {
     ...config.resolve.alias,
     'frappe-ui/tailwind': path.resolve(
       __dirname,
-      '../frappe-ui/tailwind/preset.js',
+      '../ui-kit/tailwind/preset.js',
     ),
     'frappe-ui/style.css': path.resolve(
       __dirname,
-      '../frappe-ui/src/style.css',
+      '../ui-kit/src/style.css',
     ),
-    'frappe-ui/frappe': path.resolve(__dirname, '../frappe-ui/frappe/index.js'),
+    'frappe-ui/frappe': path.resolve(__dirname, '../ui-kit/frappe/index.js'),
     // subpath entries must precede the bare `frappe-ui` key: a plain string alias
     // matches by prefix, so without these subpaths would rewrite under
     // `.../src/index.ts`. `internals` is pulled in by @framework/ui.
-    'frappe-ui/icons': path.resolve(__dirname, '../frappe-ui/icons/index.ts'),
+    'frappe-ui/icons': path.resolve(__dirname, '../ui-kit/icons/index.ts'),
     'frappe-ui/editor': path.resolve(
       __dirname,
-      '../frappe-ui/src/molecules/editor/index.ts',
+      '../ui-kit/src/molecules/editor/index.ts',
     ),
     'frappe-ui/editor-style.css': path.resolve(
       __dirname,
-      '../frappe-ui/src/molecules/editor/style.css',
+      '../ui-kit/src/molecules/editor/style.css',
     ),
-    'frappe-ui/internals': path.resolve(__dirname, '../frappe-ui/internals.ts'),
-    'frappe-ui/icons': path.resolve(__dirname, '../frappe-ui/icons/index.ts'),
-    'frappe-ui': path.resolve(__dirname, '../frappe-ui/src/index.ts'),
+    'frappe-ui/internals': path.resolve(__dirname, '../ui-kit/internals.ts'),
+    'frappe-ui/icons': path.resolve(__dirname, '../ui-kit/icons/index.ts'),
+    'frappe-ui': path.resolve(__dirname, '../ui-kit/src/index.ts'),
   }
 }
